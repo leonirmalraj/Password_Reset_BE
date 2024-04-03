@@ -41,7 +41,7 @@ const signinController = async (req, res) => {
     const user = await userModel.findOne({ email });
 
     if (!user) {
-      return res.status(404).json({ message: "User not found" });
+      return res.status(200).json({ message: "User not found" });
     }
 
     if (!user.password) {
@@ -81,7 +81,7 @@ const forgotPassword = async (req, res) => {
   try {
     let user = await userModel.findOne({ email });
     if (!user) {
-      return res.status(404).json({ message: "User not found" });
+      return res.status(200).json({ message: "User not found" });
     }
 
     const generateOTP = () => {
@@ -115,7 +115,7 @@ const forgotPassword = async (req, res) => {
         <p>Dear ${user.firstName} ${user.lastName},</p>
         <p>We received a request to reset your password. Here is your One-Time Password (OTP): <strong>${OTP}</strong></p>
         <p>Please click the following link to reset your password:</p>
-        <a href="https://golden-peony-c07453.netlify.app/reset-password">Reset Password</a>
+        <a href="https://bespoke-semifreddo-80cc7c.netlify.app/reset-password">Reset Password</a>
         <p>If you did not make this request, please ignore this email.</p>
         <p>Thank you</p>
         <p>From Validation</p>
