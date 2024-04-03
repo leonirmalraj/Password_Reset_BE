@@ -41,7 +41,7 @@ const signinController = async (req, res) => {
     const user = await userModel.findOne({ email });
 
     if (!user) {
-      return res.status(200).json({ message: "User not found" });
+      return res.status(404).json({ message: "User not found" });
     }
 
     if (!user.password) {
@@ -81,7 +81,7 @@ const forgotPassword = async (req, res) => {
   try {
     let user = await userModel.findOne({ email });
     if (!user) {
-      return res.status(200).json({ message: "User not found" });
+      return res.status(404).json({ message: "User not found" });
     }
 
     const generateOTP = () => {
